@@ -9,8 +9,19 @@ class Customer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'address',
+        'city',
+        'country',
+        'zip_code',
+        'password',
+    ];
+
     public function invoices()
     {
-        $this->hasMany(Invoice::class);
+        return $this->hasMany(Invoice::class);
     }
 }

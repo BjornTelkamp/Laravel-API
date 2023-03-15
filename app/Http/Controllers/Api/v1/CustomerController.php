@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Filters\v1\CustomerFilters;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
+use App\Http\Requests\v1\StoreCustomerRequest;
 use App\Http\Resources\v1\CustomerCollection;
 use App\Http\Resources\v1\CustomerResource;
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use App\Filters\v1\CustomerFilters;
 
 class CustomerController extends Controller
 {
@@ -19,21 +19,17 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $filter = new CustomerFilters();
-        $queryItems = $filter->transform($request);
+        $filterItems = $filter->transform($request);
 
-        if (count($queryItems) == 0) {
-            return new CustomerCollection(Customer::paginate());
-        } else {
-            return new CustomerCollection(Customer::where($queryItems)->paginate());
+        $includeInvoices = $request->query('includeInvoices');
+
+        $customers = Customer::where($filterItems);
+
+        if ($includeInvoices){
+            $customers = $customers->with('invoices');
         }
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return new CustomerCollection($customers->paginate()->appends($request->query()));
     }
 
     /**
@@ -41,7 +37,7 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        //
+        return new CustomerResource(Customer::create($request->all()));
     }
 
     /**
@@ -49,15 +45,13 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        return new CustomerResource($customer);
-    }
+        $includeInvoices = \request()->query('includeInvoices');
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Customer $customer)
-    {
-        //
+        if ($includeInvoices){
+            return new CustomerResource($customer->loadMissing('invoices'));
+        }
+
+        return new CustomerResource($customer);
     }
 
     /**

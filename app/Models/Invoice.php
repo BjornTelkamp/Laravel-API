@@ -11,6 +11,6 @@ class Invoice extends Model
 
     public function customers()
     {
-        $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class);
     }
 }
