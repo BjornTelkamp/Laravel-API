@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Filters\v1\CustomerFilters;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateCustomerRequest;
 use App\Http\Requests\v1\StoreCustomerRequest;
+use App\Http\Requests\v1\UpdateCustomerRequest;
 use App\Http\Resources\v1\CustomerCollection;
 use App\Http\Resources\v1\CustomerResource;
 use App\Models\Customer;
@@ -59,7 +59,7 @@ class CustomerController extends Controller
      */
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        //
+        $customer->update($request->all());
     }
 
     /**
