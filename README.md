@@ -17,7 +17,7 @@ This is a simple Laravel API that uses the Laravel API Resources to return a JSO
 - `GET /api/v1/customers/{id}` - Returns a single customer
 - `POST /api/v1/customers` - Creates a new customer
 - `PUT /api/v1/customers/{id}` - Updates a customer
-- `PATCH` /api/v1/customers/{id} - Updates a customer (partial)
+- `PATCH /api/v1/customers/{id}` - Updates a customer (partial)
 - `DELETE /api/v1/customers/{id}` - Deletes a customer (To be implemented)
 - `GET /api/v1/customers/{id}?includeInvoices=true` - Returns a list of invoices for a customer
 - `GET /api/v1/invoices` - Returns a list of invoices
