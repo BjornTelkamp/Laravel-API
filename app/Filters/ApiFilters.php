@@ -10,7 +10,12 @@ class ApiFilters {
         protected $columnMap = [];
         protected $operatorMap = [];
 
-        public function transform(Request $request): array
+    /**
+     * Convert request parameters to Eloquent query.
+     * @param Request $request
+     * @return array
+     */
+    public function transform(Request $request): array
         {
             $eloQuery = [];
 

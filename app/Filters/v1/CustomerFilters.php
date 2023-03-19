@@ -7,6 +7,10 @@ use App\Filters\ApiFilters;
 
 class CustomerFilters extends ApiFilters{
 
+    /**
+     * Allowed parameters for filtering
+     * @var array[]
+     */
     protected $allowedParams = [
         'name' => ['eq'],
         'email' => ['eq'],
@@ -18,10 +22,18 @@ class CustomerFilters extends ApiFilters{
         'country' => ['eq']
     ];
 
+    /**
+     * Column conversion map
+     * @var string[]
+     */
     protected $columnMap = [
         'zipCode' => 'zip_code',
     ];
 
+    /**
+     * Operator conversion map
+     * @var string[]
+     */
     protected $operatorMap = [
         'eq' => '=',
         'neq' => '!=',

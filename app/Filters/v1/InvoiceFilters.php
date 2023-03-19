@@ -7,6 +7,10 @@ use App\Filters\ApiFilters;
 
 class InvoiceFilters extends ApiFilters{
 
+    /**
+     * Allowed parameters for filtering
+     * @var array[]
+     */
     protected $allowedParams = [
         'customer_id' => ['eq'],
         'amount' => ['eq'],
@@ -16,12 +20,20 @@ class InvoiceFilters extends ApiFilters{
 
     ];
 
+    /**
+     * Column conversion map
+     * @var string[]
+     */
     protected $columnMap = [
         'customerId' => 'customer_id',
         'billedDate' => 'billed_date',
         'paidDate' => 'paid_date'
     ];
 
+    /**
+     * Operator conversion map
+     * @var string[]
+     */
     protected $operatorMap = [
         'eq' => '=',
         'neq' => '!=',

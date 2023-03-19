@@ -23,6 +23,7 @@ This is a simple Laravel API that uses the Laravel API Resources to return a JSO
 - `GET /api/v1/invoices` - Returns a list of invoices
 - `GET /api/v1/invoices/{id}` - Returns a single invoice
 - `POST /api/v1/invoices` - Creates a new invoice
+- `POST /api/v1/invoices/bulk` - Creates multiple invoices
 
 - `GET /setup` - Creates a basic admin user
 
@@ -33,3 +34,4 @@ This API uses Laravel Sanctum for authentication. To authenticate, you need to a
 
 - [Laravel](https://laravel.com/)
 - [Laravel REST API Tutorial](https://www.youtube.com/watch?v=YGqCZjdgJJk&list=PLUHpK5OcodpgfyGXjslXaHoLXDeSD8G-W&index=3&t=4200s&ab_channel=EnvatoTuts%2B)
+- [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum)
