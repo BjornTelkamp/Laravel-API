@@ -24,7 +24,11 @@ This is a simple Laravel API that uses the Laravel API Resources to return a JSO
 - `GET /api/v1/invoices/{id}` - Returns a single invoice
 - `POST /api/v1/invoices` - Creates a new invoice
 
+- `GET /setup` - Creates a basic admin user
 
+### Authentication
+
+This API uses Laravel Sanctum for authentication. To authenticate, you need to add a `Authorization` header with the value `Bearer {token}`. 
 ### Credits
 
 - [Laravel](https://laravel.com/)
